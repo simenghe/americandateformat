@@ -32,8 +32,11 @@ def getSecond(time):
 # dateStr = '5/21/2019, 11:49:07'
 # timer = getTime(dateStr)
 # print(timer)
-# curDate = datetime.datetime.now()
-# print(curDate)
+curDate = datetime.datetime.now()
+print(curDate.ctime())
+date3 = curDate.ctime()
+newdate3 = time.strptime(date3,"%a %b %d %H:%M:%S %Y")
+
 # print(curDate.hour)
 # print(curDate.minute)
 # print(type(curDate.minute))
@@ -46,4 +49,4 @@ date2 = "5/21/2019, 14:00:01"
 newdate1 = time.strptime(date1,"%m/%d/%Y, %H:%M:%S")
 newdate2 = time.strptime(date2,"%m/%d/%Y, %H:%M:%S")
 
-print(newdate1==newdate2)
+print(newdate1<newdate3)
