@@ -1,43 +1,49 @@
 import json
 import requests
 from DateJS import DateJS
-class nycParse:
-    def getTime(str):
-        time = ''
-        comma = False
-        for x in str:
-            if x == ',':
-                comma = True
-                continue
-            if comma:
-                time += x
-        return time.strip()
+import datetime
+import time
 
-    def getHour(time):
-        return time[:2]
 
-    def getMinute(time):
-        return time[3:5]
+def getTime(str):
+    time = ''
+    comma = False
+    for x in str:
+        if x == ',':
+            comma = True
+            continue
+        if comma:
+            time += x
+    return time[1:]
 
-    def getSecond(time):
-        return time[6:8]
 
-# dateStr = '5/21/2019, 11:49:07'
+def getHour(time):
+    return time[:2]
+
+
+def getMinute(time):
+    return time[3:5]
+
+
+def getSecond(time):
+    return time[6:8]
+
 #
-# timer = nycParse.getTime(dateStr)
+# dateStr = '5/21/2019, 11:49:07'
+# timer = getTime(dateStr)
 # print(timer)
-# curHour =  nycParse.getHour(timer)
-# print(curHour)
-# curMinute = nycParse.getMinute(timer)
-# print(curMinute)
-# curSecond = nycParse.getSecond(timer)
-# print(curSecond)
+# curDate = datetime.datetime.now()
+# print(curDate)
+# print(curDate.hour)
+# print(curDate.minute)
+# print(type(curDate.minute))
+# print(curDate.second)
 
+#NOW we test how to compare dates!....
+date1 = "5/21/2019, 14:00:00"
+date2 = "5/21/2019, 14:00:01"
 
+newdate1 = time.strptime(date1,"%m/%d/%Y, %H:%M:%S")
+newdate2 = time.strptime(date2,"%m/%d/%Y, %H:%M:%S")
 
-
-
-
-
-
-
+print(newdate1==newdate2)
